@@ -10,4 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include 
+#include "push_swap.h"
+
+void reverse_rotate(t_stack **stack)
+{
+	t_stack *tmp;
+	t_stack *first;
+	if (!stack || !*stack || !(*stack)->next)
+		return ;
+	tmp = *stack;
+	first = *stack;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	(*stack)->prev = tmp;
+	tmp->prev->next = NULL;
+	*stack = (*stack)->next;
+}
+
+void rra()
+{
+}
+
+void rrb()
+{
+}
+
+void rrr()
+{
+}
