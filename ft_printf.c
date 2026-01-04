@@ -70,12 +70,12 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 #include <limits.h>
 
 int main(void)
 {
-/*     int ret1, ret2;
+    int ret1, ret2;
 
     ft_printf("Test chaînes:\n");
     ret1 = printf("printf:    Hello %s!\n", "world");
@@ -142,6 +142,6 @@ int main(void)
 	 je compte jusqu'a %d\nmon nom est %s et mes initiales sont %c.%c.\n
 	 J'aime le chiffre %u, et le symbole. %%\n
 	 Mon papa est un pointeur dont l'adresse est %p 
-	 et ses codes sont %x et %X\n", d, s, 'H', 'A', u, s, 88, 112));*/
+	 et ses codes sont %x et %X\n", d, s, 'H', 'A', u, s, 88, 112));
 	return (0);
-}
+}*/

@@ -17,7 +17,7 @@ int	ft_putnbr_u(unsigned int n)
 	int	len;
 
 	len = 0;
-	if (n >= 0 && n < 10)
+	if (n < 10)
 		len += ft_putchar(n + '0');
 	else
 	{
@@ -26,3 +26,12 @@ int	ft_putnbr_u(unsigned int n)
 	}
 	return (len);
 }
+
+/*
+#include <stdio.h>
+
+int main()
+{
+	printf("%d\n", ft_putnbr_u(12));
+	return(0);
+}*/

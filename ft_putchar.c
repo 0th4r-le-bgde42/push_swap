@@ -17,6 +17,13 @@ int	ft_putchar(unsigned int c)
 	unsigned char	a;
 
 	a = (unsigned char)c;
-	write(1, &c, 1);
+	write(1, &a, 1);
 	return (1);
 }
+
+/*int main()
+{
+	int a = 122;
+	ft_putchar(a);
+	return (0);
+}*/

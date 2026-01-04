@@ -20,23 +20,23 @@ RM = rm -f
 SRC = \
 	ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putnbr_u.c \
 	ft_putptr.c ft_putnbr_hex.c \
-	swap.c push.c rotate.c
+	swap.c push.c rotate.c reverse_rotate.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-    $(AR) $(NAME) $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
 %.o: %.c
-    $(CC) $(CFLAGS) -I . -c $< -o $@
+	$(CC) $(CFLAGS) -I . -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-    $(RM) $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

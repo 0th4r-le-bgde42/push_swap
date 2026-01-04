@@ -13,29 +13,33 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libftprintf.h"
+# include "libftprintf.h"
 
-#include <unistd.h>
-#include <stdlib.h>
+# include <unistd.h>
+# include <stdlib.h>
 
 typedef struct s_stack
 {
-	int value;
-	int index;
-	struct s_stack *next;
-	struct s_stack *prev;
-} t_stack;
+	int				value;
+	int				index;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}	t_stack;
 
-void swap(t_stack **stack);
-void sa(t_stack **stack_a);
-void sb(t_stack **stack_b);
-void ss(t_stack **stack_a, t_stack **stack_b);
-void push(t_stack **src, t_stack **dst);
-void pa(t_stack **a, t_stack **b);
-void pb(t_stack **b, t_stack **a);
-void rotate(t_stack **stack);
-void ra(t_stack **stack_a);
-void rb(t_stack **stack_b);
-void rr(t_stack **stack_a, t_stack **stack_b);
+void	swap(t_stack **stack);
+void	sa(t_stack **stack_a);
+void	sb(t_stack **stack_b);
+void	ss(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **src, t_stack **dst);
+void	pa(t_stack **a, t_stack **b);
+void	pb(t_stack **b, t_stack **a);
+void	rotate(t_stack **stack);
+void	ra(t_stack **stack_a);
+void	rb(t_stack **stack_b);
+void	rr(t_stack **stack_a, t_stack **stack_b);
+void	reverse_rotate(t_stack **stack);
+void	rra(t_stack **stack_a);
+void	rrb(t_stack **stack_b);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
 
 #endif
