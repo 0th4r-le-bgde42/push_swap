@@ -6,7 +6,7 @@
 /*   By: ldauber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:09:31 by ldauber           #+#    #+#             */
-/*   Updated: 2025/12/30 15:19:33 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/05 08:25:13 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,3 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	write(1, "rr\n", 3);
 }
 
-/*#include <stdio.h>
-
-t_stack *new_node(int val)
-{
-	t_stack *node = malloc(sizeof(t_stack));
-	node->value = val;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
-}
-
-void printf_stack(t_stack *a)
-{
-	printf("Etat de la pile\n");
-	printf("A: ");
-	while(a) {printf("%d ", a->value); a = a->next;}
-}
-
-int main()
-{
-	t_stack *stack_a = NULL;
-
-	stack_a = new_node(15);
-	stack_a->next = new_node(2);
-    stack_a->next->prev = stack_a;
-    stack_a->next->next = new_node(6);
-    stack_a->next->next->prev = stack_a->next;
-
-	printf_stack(stack_a);
-
-	ra(&stack_a);
-	printf("\nNouvel ");
-	printf_stack(stack_a);
-	return (0);
-}*/
