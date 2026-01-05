@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ldauber <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 11:56:43 by ldauber           #+#    #+#              #
-#    Updated: 2025/12/30 15:19:50 by ldauber          ###   ########.fr        #
+#    Updated: 2026/01/05 15:08:25 by ldauber          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ RM = rm -f
 SRC = \
 	ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putnbr_u.c \
 	ft_putptr.c ft_putnbr_hex.c \
-	swap.c push.c rotate.c reverse_rotate.c
+	swap.c push.c rotate.c reverse_rotate.c \
+	bubble_sort.c print.c
 
 OBJ = $(SRC:.c=.o)
 
