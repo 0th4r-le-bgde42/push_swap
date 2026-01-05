@@ -6,7 +6,7 @@
 /*   By: ldauber <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:20:33 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/05 08:25:31 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/05 09:22:14 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 	reverse_rotate(stack_b);
 	write(1, "rrr\n", 4);
 }
-
