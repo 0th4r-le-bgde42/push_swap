@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 17:24:04 by ldauber           #+#    #+#             */
-/*   Updated: 2025/11/11 13:31:10 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/06 14:23:13 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	ft_putstr(char *s)
 {
 	if (!s)
 	{
-		write(1, "(null)", 6);
+		write(2, "(null)", 6);
 		return (6);
 	}
-	write(1, s, ft_strlen(s));
+	write(2, s, ft_strlen(s));
 	return (ft_strlen(s));
 }

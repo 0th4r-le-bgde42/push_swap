@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 16:48:14 by ldauber           #+#    #+#             */
-/*   Updated: 2025/11/11 13:31:40 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/06 14:22:26 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_putchar(unsigned int c)
 	unsigned char	a;
 
 	a = (unsigned char)c;
-	write(1, &a, 1);
+	write(2, &a, 1);
 	return (1);
 }
 

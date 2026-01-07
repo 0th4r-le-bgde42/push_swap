@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:09:41 by ldauber           #+#    #+#             */
-/*   Updated: 2025/11/27 12:40:51 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:02:41 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ static int	ft_types(va_list args, char c)
 		len += ft_putstr(va_arg(args, char *));
 	if (c == 'c')
 		len += ft_putchar(va_arg(args, unsigned int));
-	if (c == 'u')
-		len += ft_putnbr_u(va_arg(args, unsigned int));
 	if (c == '%')
 		len += ft_putchar('%');
-	if (c == 'p')
-		len += ft_putptr(va_arg(args, void *));
-	if (c == 'x')
-		len += ft_putnbr_hex(va_arg(args, unsigned int), "0123456789abcdef");
-	if (c == 'X')
-		len += ft_putnbr_hex(va_arg(args, unsigned int), "0123456789ABCDEF");
 	return (len);
 }
 
@@ -136,12 +128,12 @@ int main(void)
 	 je compte jusqu'a %d\n
 	 mon nom est %s et mes initiales sont %c.%c\n
 	 J'aime le chiffre %u, et le symbole. %%\n
-	 Mon papa est un pointeur dont l'adresse est %p
+	 Mon ft_paft_pa est un pointeur dont l'adresse est %p
 	 et ses codes sont %x et %X\n", d, s, 'H', 'A', u, s, 88, 112));
 	ft_printf("%d\n\n", ft_printf("ft_printf:  Bonjour a tous,\n
 	 je compte jusqu'a %d\nmon nom est %s et mes initiales sont %c.%c.\n
 	 J'aime le chiffre %u, et le symbole. %%\n
-	 Mon papa est un pointeur dont l'adresse est %p 
+	 Mon ft_paft_pa est un pointeur dont l'adresse est %p 
 	 et ses codes sont %x et %X\n", d, s, 'H', 'A', u, s, 88, 112));
 	return (0);
 }*/

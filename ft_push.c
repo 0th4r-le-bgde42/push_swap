@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldauber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 13:07:58 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/05 10:24:32 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:49:10 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_stack **src, t_stack **dst)
+static	void	ft_push(t_stack **src, t_stack **dst)
 {
 	t_stack	*tmp;
 
@@ -37,14 +37,18 @@ void	push(t_stack **src, t_stack **dst)
 	}
 }
 
-void	pa(t_stack **b, t_stack **a)
+void	ft_pa(t_stack **b, t_stack **a, t_tracking **track)
 {
-	push(b, a);
+	ft_push(b, a);
 	write(1, "pa\n", 3);
+	(*track)->p[0] += 1;
+	(*track)->total_ops += 1;
 }
 
-void	pb(t_stack **a, t_stack **b)
+void	ft_pb(t_stack **a, t_stack **b, t_tracking **track)
 {
-	push(a, b);
+	ft_push(a, b);
 	write(1, "pb\n", 3);
+	(*track)->p[1] += 1;
+	(*track)->total_ops += 1;
 }

@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/11 09:53:30 by ldauber           #+#    #+#             */
-/*   Updated: 2025/11/11 13:31:36 by ldauber          ###   ########.fr       */
+/*   Created: 2026/01/06 14:35:50 by mschappe          #+#    #+#             */
+/*   Updated: 2026/01/07 11:03:02 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "push_swap.h"
 
-int	ft_putnbr_u(unsigned int n)
+void	ft_error(t_tracking **track)
 {
-	int	len;
-
-	len = 0;
-	if (n < 10)
-		len += ft_putchar(n + '0');
-	else
-	{
-		len += ft_putnbr_u(n / 10);
-		len += ft_putnbr_u(n % 10);
-	}
-	return (len);
+	free(*track);
+	write(2, "Error\n", 6);
+	exit(0);
 }
-
-/*
-#include <stdio.h>
-
-int main()
-{
-	printf("%d\n", ft_putnbr_u(12));
-	return(0);
-}*/

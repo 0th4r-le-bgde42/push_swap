@@ -1,54 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 12:32:09 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/05 16:17:22 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:50:58 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	void bubble_swap(t_stack **a, t_stack **b, int size, t_tracking **track)
+static	void	ft_bubble_swap(t_stack **a, t_stack **b, int size,
+	t_tracking **track)
 {
-	(*track)->disorder = 0.0;
-	int i;
+	int	i;
 
 	i = 0;
-	pb(a, b);
+	ft_pb(a, b, track);
 	while (i < size)
 	{
-		if ((*a)->next == NULL)
-		{
-			pb(a, b);
-			return ;
-		}
 		if ((*a)->value < (*b)->value)
 		{
-			pb(a, b);
-			sb(b);
-			pa(b, a);
-			ra(a);
+			ft_pb(a, b, track);
+			ft_sb(b, track);
+			if (*a != NULL)
+			{
+				ft_pa(b, a, track);
+				ft_ra(a, track);
+			}
 		}
 		else
-			ra(a);
+			ft_ra(a, track);
 		i++;
 	}
 }
 
-void	bubble_sort(t_stack **a, t_stack **b, int size, t_tracking **track)
+void	ft_bubble_sort(t_stack **a, t_stack **b, int size, t_tracking **track)
 {
-	int n;
-	
-	n = size;
-	while (n > 0 && *a)
+	int	n;
+
+	n = size - 1;
+	if (size == 1)
+		return ;
+	while (*a)
 	{
-		bubble_swap(a, b, n, track);
+		ft_bubble_swap(a, b, n, track);
 		n--;
 	}
 	while (*b)
-		pa(b, a);
+		ft_pa(b, a, track);
 }

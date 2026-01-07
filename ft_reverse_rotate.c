@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldauber <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 15:20:33 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/05 09:22:14 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:49:20 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_stack **stack)
+static	void	ft_reverse_ft_rotate(t_stack **stack)
 {
 	t_stack	*first;
 	t_stack	*last;
@@ -31,21 +31,27 @@ void	reverse_rotate(t_stack **stack)
 	*stack = last;
 }
 
-void	rra(t_stack **stack_a)
+void	ft_rra(t_stack **stack_a, t_tracking **track)
 {
-	reverse_rotate(stack_a);
+	ft_reverse_ft_rotate(stack_a);
 	write(1, "rra\n", 4);
+	(*track)->rr[0] += 1;
+	(*track)->total_ops += 1;
 }
 
-void	rrb(t_stack **stack_b)
+void	ft_rrb(t_stack **stack_b, t_tracking **track)
 {
-	reverse_rotate(stack_b);
+	ft_reverse_ft_rotate(stack_b);
 	write(1, "rrb\n", 4);
+	(*track)->rr[1] += 1;
+	(*track)->total_ops += 1;
 }
 
-void	rrr(t_stack **stack_a, t_stack **stack_b)
+void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_tracking **track)
 {
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	ft_reverse_ft_rotate(stack_a);
+	ft_reverse_ft_rotate(stack_b);
 	write(1, "rrr\n", 4);
+	(*track)->rr[2] += 1;
+	(*track)->total_ops += 1;
 }

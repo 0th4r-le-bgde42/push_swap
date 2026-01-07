@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 14:58:17 by ldauber           #+#    #+#             */
-/*   Updated: 2025/11/11 13:33:27 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/06 16:02:39 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@
 int		ft_printf(const char *format, ...);
 int		ft_putchar(unsigned int c);
 int		ft_putnbr(int n);
-int		ft_putnbr_u(unsigned int n);
-int		ft_putnbr_hex(unsigned int n, char *base);
 int		ft_putstr(char *s);
-int		ft_putptr(void *p);
+int		ft_putfloat(double n);
 
 #endif

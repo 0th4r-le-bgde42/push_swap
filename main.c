@@ -6,148 +6,89 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 08:25:47 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/05 15:48:44 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/07 16:01:47 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
-// Utilitaire pour créer un nouveau noeud
-t_stack	*new_node(int val)
+//Malloc sur var track et dans ft_ft_new_node sur var node//
+
+static	void	ft_compute_disorder(t_stack **stack, t_tracking **track)
 {
-	t_stack	*node;
+	t_stack	*i;
+	t_stack	*j;
+	int	mistakes;
+	int	total_ft_pairs;
 
-	node = malloc(sizeof(t_stack));
-	if (!node)
-		return (NULL);
-	node->value = val;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
+	if (!stack || !(*stack)->next)
+		return ;
+	mistakes = 0;
+	total_ft_pairs = 0;
+	i = *stack;
+	while (i != NULL)
+	{
+		j = i->next;
+		while (j != NULL)
+		{
+			total_ft_pairs++;
+			if (i->value > j->value)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	(*track)->disorder = (double)((mistakes / total_ft_pairs) * 100);
 }
 
-// Fonction d'affichage avancée pour vérifier l'intégrité de la liste
-/*void	print_status(t_stack *a, t_stack *b)
+static	void	ft_init_stack(t_stack **a, t_tracking **track,
+	int ac, char **av)
 {
-	t_stack	*tmp;
+	int		i;
+	long	val;
 
-	tmp = a;
-	ft_printf("\n--- ÉTAT DES PILES ---\n");
-	ft_printf("A: ");
-	while (tmp)
+	i = (*track)->nb_options + 1;
+	while (i < ac)
 	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\nB: ");
-	tmp = b;
-	while (tmp)
-	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\n----------------------\n");
-}*/
-
-void	stack_add_back(t_stack **stack, t_stack *new)
-{
-	t_stack	*last;
-
-	if (!stack || !new)
-		return ;
-	if (!*stack)
-	{
-		*stack = new;
-		return ;
-	}
-	last = *stack;
-	while (last->next)
-		last = last->next;
-	last->next = new;
-	new->prev = last;
-}
-
-int	ft_atoi(char *s)
-{
-	int	i;
-	int	res;
-	int	sign;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	if (s[i] == '+' || s[i] == '-')
-	{
-		if (s[i] == '-')
-			sign *= -1;
+		if (!ft_isnum(av[i]))
+		{
+			ft_free_stack(a);
+			ft_error(track);
+		}
+		val = ft_atoi(av[i]);
+		if (val > 2147483647 || val < -2147483648)
+		{
+			ft_free_stack(a);
+			ft_error(track);
+		}
+		ft_stack_add_back(a, ft_new_node((int) val), track);
 		i++;
 	}
-	while (s[i])
-	{
-		res *= 10;
-		res += s[i] - 48;
-		i++;
-	}
-	return (res * sign);
 }
 
 int	main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		i;
-	int		val;
+	t_stack		*a;
+	t_stack		*b;
+	t_tracking	*track;
 
-	a = NULL;
-	b = NULL;
 	if (ac < 2)
 		return (0);
-	i = 1;
-	while (i < ac)
-	{
-		val = ft_atoi(av[i]);
-		stack_add_back(&a, new_node(val));
-		i++;
-	}
-
-	t_tracking *track;
-
+	a = NULL;
+	b = NULL;
 	track = malloc(sizeof(t_tracking));
+	if (!track)
+		return (0);
 	ft_init_track(&track);
-	bubble_sort(&a, &b, ac - 1, &track);
-	print_status(&a, &b);
-/*	ft_printf("1. État initial (A: 15, 2, 6 | B: vide)\n-->");
-	print_status(a, NULL);
-	// --- TEST SWAP (sa) ---
-	ft_printf("\n2. Action: sa (échanger 15 et 2)\n-->");
-	sa(&a);
+	ft_check_options(av, &track, ac);
+	ft_init_stack(&a, &track, ac, av);
+	ft_insertion_sort(&a, &b, &track);
+	//ft_bubble_sort(&a, &b, ft_str_stack_len(&a), &track);
+	ft_compute_disorder(&a, &track);
 	print_status(a, b);
-	// --- TEST PUSH (pb) ---
-	ft_printf("\n3. Action: pb (envoyer 2 vers B)\n-->");
-	pb(&a, &b);
-	print_status(a, b);
-	// --- TEST ROTATE (ra) ---
-	// A était [15, 6], devient [6, 15]
-	ft_printf("\n4. Action: ra (le premier de A [15] va au fond)\n-->");
-	ra(&a);
-	print_status(a, b);
-	// --- TEST REVERSE ROTATE (rra) ---
-	// A était [6, 15], devient [15, 6]
-	ft_printf("\n5. Action: rra (le dernier de A [15] revient en haut)\n-->");
-	rra(&a);
-	print_status(a, b);
-	// --- TEST COMBINÉS (ss, rr, rrr) ---
-	ft_printf("\n6. Action: pb (pour avoir des éléments dans B)\n-->");
-	pb(&a, &b); // A: [6], B: [15, 2]
-	print_status(a, b);
-	ft_printf("\n7. Action: rrr (reverse rotate A et B)\n-->");
-	rrr(&a, &b); // A ne bouge pas (1 seul élem), B: [2, 15]
-	print_status(a, b);*/
+	if (track->bench == 1)
+		ft_bench(&track);
+	free(track);
+	ft_free_stack(&a);
 	return (0);
 }
-
