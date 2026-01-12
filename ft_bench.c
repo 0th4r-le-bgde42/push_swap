@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 14:10:09 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/07 16:01:24 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/09 14:42:54 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static	void	ft_strat(t_tracking **track)
 	else if (ft_strcmp((*track)->strat, "Complex") == 0)
 		ft_printf("[bench] strategy: Complex / O(n log n)\n");
 	else if (ft_strcmp((*track)->strat, "Adaptive") == 0)
-		ft_printf("[bench] strategy: Adaptive / %s\n", "pipi");
+		ft_printf("[bench] strategy: Adaptive / %s\n", (*track)->form);
 }
 
 void	ft_bench(t_tracking **track)
 {
-	ft_printf("\n[bench] disorder: %f%%\n", (*track)->disorder);
+	ft_printf("\n[bench] disorder: %f%%\n", (*track)->disorder * 100);
 	ft_strat(track);
 	ft_printf("[bench] total_ops: %d\n", (*track)->total_ops);
 	ft_printf("[bench] sa: %d sb: %d ss: %d ", (*track)->s[0], (*track)->s[1],

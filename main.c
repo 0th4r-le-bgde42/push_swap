@@ -6,40 +6,11 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 08:25:47 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/07 16:01:47 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/12 11:10:04 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//Malloc sur var track et dans ft_ft_new_node sur var node//
-
-static	void	ft_compute_disorder(t_stack **stack, t_tracking **track)
-{
-	t_stack	*i;
-	t_stack	*j;
-	int	mistakes;
-	int	total_ft_pairs;
-
-	if (!stack || !(*stack)->next)
-		return ;
-	mistakes = 0;
-	total_ft_pairs = 0;
-	i = *stack;
-	while (i != NULL)
-	{
-		j = i->next;
-		while (j != NULL)
-		{
-			total_ft_pairs++;
-			if (i->value > j->value)
-				mistakes++;
-			j = j->next;
-		}
-		i = i->next;
-	}
-	(*track)->disorder = (double)((mistakes / total_ft_pairs) * 100);
-}
 
 static	void	ft_init_stack(t_stack **a, t_tracking **track,
 	int ac, char **av)
@@ -66,6 +37,20 @@ static	void	ft_init_stack(t_stack **a, t_tracking **track,
 	}
 }
 
+static	void	ft_selector(t_stack **a, t_stack **b, t_tracking **track)
+{
+	if (ft_strcmp((*track)->strat, "Simple") == 0)
+		ft_insertion_sort(a, b, track);
+	else if (ft_strcmp((*track)->strat, "Medium") == 0)
+		ft_bucket_sort(a, b, track);
+	else if (ft_strcmp((*track)->strat, "Complex") == 0)
+		ft_printf("Complex algo\n");
+	else
+		ft_adaptive(a, b, track);
+	if ((*track)->bench)
+		ft_bench(track);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack		*a;
@@ -82,12 +67,7 @@ int	main(int ac, char **av)
 	ft_init_track(&track);
 	ft_check_options(av, &track, ac);
 	ft_init_stack(&a, &track, ac, av);
-	ft_insertion_sort(&a, &b, &track);
-	//ft_bubble_sort(&a, &b, ft_str_stack_len(&a), &track);
-	ft_compute_disorder(&a, &track);
-	print_status(a, b);
-	if (track->bench == 1)
-		ft_bench(&track);
+	ft_selector(&a, &b, &track);
 	free(track);
 	ft_free_stack(&a);
 	return (0);

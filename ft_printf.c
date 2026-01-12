@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:09:41 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/07 11:02:41 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/08 11:34:49 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	ft_types(va_list args, char c)
 		len += ft_putchar(va_arg(args, unsigned int));
 	if (c == '%')
 		len += ft_putchar('%');
+	if (c == 'f')
+		len += ft_putfloat(va_arg(args, double));
 	return (len);
 }
 

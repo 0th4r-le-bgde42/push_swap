@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 11:44:45 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/07 13:15:58 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/12 11:10:43 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_tracking
 	int		nb_options;
 	double	disorder;
 	char	*strat;
+	char	*form;
 	int		total_ops;
 	int		s[3];
 	int		p[2];
@@ -46,8 +47,8 @@ void	print_status(t_stack *a, t_stack *b);
 void	ft_sa(t_stack **stack_a, t_tracking **track);
 void	ft_sb(t_stack **stack_b, t_tracking **track);
 void	ft_ss(t_stack **stack_a, t_stack **stack_b, t_tracking **track);
-void	ft_pa(t_stack **a, t_stack **b, t_tracking **track);
-void	ft_pb(t_stack **b, t_stack **a, t_tracking **track);
+void	ft_pa(t_stack **b, t_stack **a, t_tracking **track);
+void	ft_pb(t_stack **a, t_stack **b, t_tracking **track);
 void	ft_ra(t_stack **stack_a, t_tracking **track);
 void	ft_rb(t_stack **stack_b, t_tracking **track);
 void	ft_rr(t_stack **stack_a, t_stack **stack_b, t_tracking **track);
@@ -60,14 +61,15 @@ void	ft_bench(t_tracking **track);
 void	ft_check_options(char **av, t_tracking **track, int ac);
 void	ft_error(t_tracking **track);
 void	ft_free_stack(t_stack **stack);
+void	ft_insertion_sort(t_stack **a, t_stack **b, t_tracking **track);
+void	ft_bucket_sort(t_stack **a, t_stack **b, t_tracking **track);
+void	ft_adaptive(t_stack **a, t_stack **b, t_tracking **track);
 long	ft_atoi(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_isnum(char *s);
 int		ft_str_stack_len(t_stack **stack);
 int		ft_is_dup(t_stack **stack, t_stack *new);
+int		ft_sqrt(int n);
 t_stack	*ft_new_node(int val);
-
-void	ft_bubble_sort(t_stack **a, t_stack **b, int size, t_tracking **track);
-void	ft_insertion_sort(t_stack **a, t_stack **b, t_tracking **track);
 
 #endif

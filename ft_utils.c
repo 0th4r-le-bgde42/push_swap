@@ -6,11 +6,38 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 11:17:35 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/07 11:47:56 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/12 11:12:39 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// SUPP
+void	print_status(t_stack *a, t_stack *b)
+{
+	t_stack	*tmp;
+
+	tmp = a;
+	ft_printf("\n--- ÉTAT DES PILES ---\n");
+	ft_printf("A: ");
+	while (tmp)
+	{
+		ft_printf("[%d]", tmp->value);
+		if (tmp->next)
+			ft_printf(" -> ");
+		tmp = tmp->next;
+	}
+	ft_printf("\nB: ");
+	tmp = b;
+	while (tmp)
+	{
+		ft_printf("[%d]", tmp->value);
+		if (tmp->next)
+			ft_printf(" -> ");
+		tmp = tmp->next;
+	}
+	ft_printf("\n----------------------\n");
+}
 
 long	ft_atoi(char *s)
 {
@@ -46,32 +73,6 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	print_status(t_stack *a, t_stack *b)
-{
-	t_stack	*tmp;
-
-	tmp = a;
-	ft_printf("\n--- ÉTAT DES PILES ---\n");
-	ft_printf("A: ");
-	while (tmp)
-	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\nB: ");
-	tmp = b;
-	while (tmp)
-	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\n----------------------\n");
-}
-
 int	ft_isnum(char *s)
 {
 	int	i;
@@ -101,4 +102,16 @@ int	ft_is_dup(t_stack **stack, t_stack *new)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	ft_sqrt(int n)
+{
+	int	i;
+
+	i = 0;
+	while ((i * i) <= n && i <= 46340)
+		i++;
+	if ((i * i) > n)
+		return (i - 1);
+	return (i);
 }

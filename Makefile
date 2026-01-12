@@ -6,7 +6,7 @@
 #    By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/30 11:56:43 by ldauber           #+#    #+#              #
-#    Updated: 2026/01/07 13:38:37 by ldauber          ###   ########.fr        #
+#    Updated: 2026/01/09 14:36:35 by ldauber          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC = \
 	ft_printf.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putfloat.c \
 	ft_swap.c ft_push.c ft_rotate.c ft_reverse_rotate.c \
 	ft_utils.c ft_struct_utils.c \
-	ft_bubble_sort.c ft_insertion_sort.c \
+	ft_insertion_sort.c ft_bucket_sort.c ft_adaptive.c \
 	ft_check.c ft_error.c \
 	ft_bench.c main.c 
 
