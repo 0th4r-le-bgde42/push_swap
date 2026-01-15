@@ -82,3 +82,14 @@ number of operations:
          ◦ Less than 5500 operations for excellent performance
 
 ## Resources
+https://www.geeksforgeeks.org/dsa/insertion-sort-algorithm/
+
+https://www.geeksforgeeks.org/dsa/bucket-sort-2/
+
+https://fr.wikipedia.org/wiki/Tri_par_paquets
+
+https://fr.wikipedia.org/wiki/Tri_par_base
+
+http://www.giacomazzi.fr/infor/Tri/TRadix.htm
+
+https://en.wikipedia.org/wiki/Radix_sort

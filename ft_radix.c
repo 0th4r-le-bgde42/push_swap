@@ -1,35 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_radix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/06 14:35:50 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/14 15:09:26 by ldauber          ###   ########.fr       */
+/*   Created: 2026/01/12 13:33:43 by mschappe          #+#    #+#             */
+/*   Updated: 2026/01/14 14:52:15 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_error(t_tracking **track)
+void	ft_radix(t_stack **a, t_stack **b, t_tracking **track)
 {
-	free(*track);
-	write(2, "Error\n", 6);
-	exit(0);
-}
+	int	len;
+	int	max_bits;
+	int	i;
+	int	j;
 
-void	ft_free_split(char **s)
-{
-	int		i;
-
-	i = 0;
-	while (s[i] != NULL)
-		i++;
-	while (i >= 0)
+	ft_init_index(a, track);
+	len = ft_str_stack_len(a);
+	max_bits = 0;
+	while (((len - 1) >> max_bits) != 0)
+		max_bits++;
+	i = -1;
+	while (++i < max_bits)
 	{
-		free(s[i]);
-		i--;
+		j = -1;
+		while (++j < len)
+		{
+			if ((((*a)->index >> i) & 1) == 1)
+				ft_ra(a, track);
+			else
+				ft_pb(a, b, track);
+		}
+		while (*b)
+			ft_pa(b, a, track);
 	}
-	free(s);
 }

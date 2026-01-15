@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 12:36:34 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/07 11:44:36 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/14 14:47:19 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ t_stack	*ft_new_node(int val)
 	return (node);
 }
 
-void	ft_stack_add_back(t_stack **stack, t_stack *new, t_tracking **track)
+void	ft_stack_add_back(t_stack **stack, t_stack *new,
+				t_tracking **track, char **av)
 {
 	t_stack	*last;
 
 	if (!stack || !new || ft_is_dup(stack, new))
 	{
+		ft_free_split(av);
 		ft_free_stack(stack);
 		ft_error(track);
 	}

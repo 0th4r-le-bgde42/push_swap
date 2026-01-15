@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mschappe <mschappe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 11:17:35 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/12 11:12:39 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/14 15:20:44 by mschappe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// SUPP
-void	print_status(t_stack *a, t_stack *b)
-{
-	t_stack	*tmp;
-
-	tmp = a;
-	ft_printf("\n--- ÉTAT DES PILES ---\n");
-	ft_printf("A: ");
-	while (tmp)
-	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\nB: ");
-	tmp = b;
-	while (tmp)
-	{
-		ft_printf("[%d]", tmp->value);
-		if (tmp->next)
-			ft_printf(" -> ");
-		tmp = tmp->next;
-	}
-	ft_printf("\n----------------------\n");
-}
 
 long	ft_atoi(char *s)
 {
@@ -80,6 +53,8 @@ int	ft_isnum(char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-' && i == 0)
+			i++;
 		if (!(s[i] >= '0' && s[i] <= '9'))
 			return (0);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 11:44:45 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/12 11:10:43 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/14 14:48:01 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@ typedef struct s_tracking
 	int		rr[3];
 }	t_tracking;
 
+typedef struct s_bucket
+{
+	int	len;
+	int	count;
+	int	range;
+	int	current_range;
+	int	prev_range;
+	int	max_index;
+	int	min_index;
+	int	tmp_index;
+}	t_bucket;
+
 void	print_status(t_stack *a, t_stack *b);
 
 void	ft_sa(t_stack **stack_a, t_tracking **track);
@@ -55,7 +67,8 @@ void	ft_rr(t_stack **stack_a, t_stack **stack_b, t_tracking **track);
 void	ft_rra(t_stack **stack_a, t_tracking **track);
 void	ft_rrb(t_stack **stack_b, t_tracking **track);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_tracking **track);
-void	ft_stack_add_back(t_stack **stack, t_stack *new, t_tracking **track);
+void	ft_stack_add_back(t_stack **stack, t_stack *new,
+			t_tracking **track, char **av);
 void	ft_init_track(t_tracking **track);
 void	ft_bench(t_tracking **track);
 void	ft_check_options(char **av, t_tracking **track, int ac);
@@ -71,5 +84,10 @@ int		ft_str_stack_len(t_stack **stack);
 int		ft_is_dup(t_stack **stack, t_stack *new);
 int		ft_sqrt(int n);
 t_stack	*ft_new_node(int val);
+void	ft_radix(t_stack **a, t_stack **b, t_tracking **track);
+void	ft_init_index(t_stack **a, t_tracking **track);
+char	**ft_split(char *s, char c, t_tracking **track);
+char	*ft_join_args(int ac, char **av, t_tracking **track);
+void	ft_free_split(char **s);
 
 #endif
