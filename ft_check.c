@@ -6,7 +6,7 @@
 /*   By: mschappe <mschappe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 14:34:23 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/14 15:29:47 by mschappe         ###   ########.fr       */
+/*   Updated: 2026/01/15 11:03:18 by mschappe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static	int	ft_check_options_extend(char **av, t_tracking **track, int ac)
 
 void	ft_check_options(char **av, t_tracking **track, int ac)
 {
-	if (ft_check_options_extend(av, track, ac))
+	if (ac == 1 || ft_check_options_extend(av, track, ac))
 	{
 		ft_free_split(av);
 		ft_error(track);

@@ -6,7 +6,7 @@
 /*   By: mschappe <mschappe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 11:17:35 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/14 15:20:44 by mschappe         ###   ########.fr       */
+/*   Updated: 2026/01/21 10:56:35 by mschappe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,4 @@ int	ft_is_dup(t_stack **stack, t_stack *new)
 		tmp = tmp->next;
 	}
 	return (0);
-}
-
-int	ft_sqrt(int n)
-{
-	int	i;
-
-	i = 0;
-	while ((i * i) <= n && i <= 46340)
-		i++;
-	if ((i * i) > n)
-		return (i - 1);
-	return (i);
 }

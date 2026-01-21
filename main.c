@@ -6,11 +6,38 @@
 /*   By: mschappe <mschappe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 08:25:47 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/14 15:29:58 by mschappe         ###   ########.fr       */
+/*   Updated: 2026/01/21 10:44:16 by mschappe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static	void	ft_compute_disorder(t_stack *a, t_tracking **track)
+{
+	t_stack	*i;
+	t_stack	*j;
+	int		mistakes;
+	int		total_ft_pairs;
+
+	if (!a || !a->next)
+		return ;
+	mistakes = 0;
+	total_ft_pairs = 0;
+	i = a;
+	while (i != NULL)
+	{
+		j = i->next;
+		while (j != NULL)
+		{
+			total_ft_pairs++;
+			if (i->value > j->value)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	(*track)->disorder = ((double)mistakes / (double)total_ft_pairs);
+}
 
 static	void	ft_init_stack(t_stack **a, t_tracking **track,
 	int ac, char **av)
@@ -41,14 +68,20 @@ static	void	ft_init_stack(t_stack **a, t_tracking **track,
 
 static	void	ft_selector(t_stack **a, t_stack **b, t_tracking **track)
 {
-	if (ft_strcmp((*track)->strat, "Simple") == 0)
-		ft_insertion_sort(a, b, track);
-	else if (ft_strcmp((*track)->strat, "Medium") == 0)
-		ft_bucket_sort(a, b, track);
-	else if (ft_strcmp((*track)->strat, "Complex") == 0)
-		ft_radix(a, b, track);
-	else
-		ft_adaptive(a, b, track);
+	ft_compute_disorder(*a, track);
+	if (ft_str_stack_len(a) <= 3)
+		ft_small_sort(a, b, track);
+	else if ((*track)->disorder > 0.0)
+	{
+		if (ft_strcmp((*track)->strat, "Simple") == 0)
+			ft_insertion_sort(a, b, track);
+		else if (ft_strcmp((*track)->strat, "Medium") == 0)
+			ft_bucket_sort(a, b, track);
+		else if (ft_strcmp((*track)->strat, "Complex") == 0)
+			ft_radix(a, b, track);
+		else
+			ft_adaptive(a, b, track);
+	}
 	if ((*track)->bench)
 		ft_bench(track);
 }
@@ -84,7 +117,6 @@ int	main(int ac, char **av)
 	ft_check_options(new_av, &track, ft_new_ac(new_av));
 	ft_init_stack(&a, &track, ft_new_ac(new_av), new_av);
 	ft_selector(&a, &b, &track);
-	print_status(a, b);
 	ft_free_split(new_av);
 	free(track);
 	ft_free_stack(&a);

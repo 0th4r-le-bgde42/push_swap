@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 12:36:34 by mschappe          #+#    #+#             */
-/*   Updated: 2026/01/14 14:47:19 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/15 10:47:45 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_init_track(t_tracking **track)
 	(*track)->nb_options = 0;
 	(*track)->disorder = 0.0;
 	(*track)->strat = "Adaptive";
+	(*track)->form = "O(n²)";
 	(*track)->total_ops = 0;
 	while (++i < 3)
 	{

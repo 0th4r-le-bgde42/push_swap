@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mschappe <mschappe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 11:44:45 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/14 14:48:01 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/21 10:56:49 by mschappe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-
-# include <stdio.h> // SUPP
 
 typedef struct s_stack
 {
@@ -54,8 +52,6 @@ typedef struct s_bucket
 	int	tmp_index;
 }	t_bucket;
 
-void	print_status(t_stack *a, t_stack *b);
-
 void	ft_sa(t_stack **stack_a, t_tracking **track);
 void	ft_sb(t_stack **stack_b, t_tracking **track);
 void	ft_ss(t_stack **stack_a, t_stack **stack_b, t_tracking **track);
@@ -82,12 +78,12 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_isnum(char *s);
 int		ft_str_stack_len(t_stack **stack);
 int		ft_is_dup(t_stack **stack, t_stack *new);
-int		ft_sqrt(int n);
 t_stack	*ft_new_node(int val);
 void	ft_radix(t_stack **a, t_stack **b, t_tracking **track);
 void	ft_init_index(t_stack **a, t_tracking **track);
 char	**ft_split(char *s, char c, t_tracking **track);
 char	*ft_join_args(int ac, char **av, t_tracking **track);
 void	ft_free_split(char **s);
+void	ft_small_sort(t_stack **a, t_stack **b, t_tracking **track);
 
 #endif

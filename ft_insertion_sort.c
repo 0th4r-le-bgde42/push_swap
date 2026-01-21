@@ -6,7 +6,7 @@
 /*   By: ldauber <ldauber@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 12:45:34 by ldauber           #+#    #+#             */
-/*   Updated: 2026/01/14 15:01:08 by ldauber          ###   ########.fr       */
+/*   Updated: 2026/01/15 10:49:47 by ldauber          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_insertion_sort(t_stack **a, t_stack **b, t_tracking **track)
 	int	size;
 
 	if (ft_str_stack_len(a) == 1)
-		return ;	
+		return ;
 	while (*a)
 	{
 		pos = ft_min_pos(a);
